@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+<br>
+<div>
+    <p>Sharing store list</p>
+    <form id="share_add" action="/settings/share/add/" method="POST">
+        {% csrf_token %}
+        <br>
+        <div style="width: 300px">
+            <p>Share with<input style="float: right;" type="text" name="share_add" required/></p>
+            <input type="hidden" name="product_id" value="{{ product_id }}">
+            <input style="width: 300px;" type="submit" value="Add">
+        </div>
+    </form>
+    <form id="share_del" action="/settings/share/del/" method="POST">
+        {% csrf_token %}
+        <br>
+        <div style="width: 300px">
+            <p>Stop share with<input style="float: right;" type="text" name="share_del" required/></p>
+            <input type="hidden" name="product_id" value="{{ product_id }}">
+            <input style="width: 300px;" type="submit" value="Del">
+        </div>
+    </form>
+
+</div>
+
+<br>
+<br>
+<a href="/">Back ==>> Home</a>
+<br>
+{% endblock body_content %}

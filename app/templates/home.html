@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block body_content %}
+
+<div>
+    <h3>Your store list</h3>
+    {% if user_data|length > 0 %}
+        <h3>Groups</h3>
+        <ul>
+            {% for group_id, group_value in user_data.items %}
+            {% if 'my list' in group_id %}
+                <li>
+                    <div>
+                        <p>{{ group_id }}</p>
+                        {% include 'home_my_group_value.html' %}
+                    </div>
+                    <br>
+                </li>
+            {% endif %}
+            {% if 'my list' not in group_id %}
+                <li>
+                    <div>
+                        <p>{{ group_id }}</p>
+                        {% include 'home_group_value.html' %}
+                    </div>
+                    <br>
+                </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+<br>
+<br>
+<br>
+<br>
+{% endblock body_content %}

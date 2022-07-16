@@ -1,0 +1,51 @@
+<ul>
+    {% for date, d_products_value in group_value.items %}
+    <li>
+        <div>
+            <p>{{ date }}</p>
+            <ul>
+                {% for locator, locator_value in d_products_value.items %}
+                <li>
+                    <p>{{ locator.upper }}</p>
+                    <div>
+                        {% if locator_value.location_desc != None %}
+                        <p>Description: {{ locator_value.location_desc }}</p>
+                        {% endif %}
+                        {% if locator_value.location_coord != None %}
+                        <p>Coordinates: {{ locator_value.location_coord }}</p>
+                        {% endif %}
+                        {% if locator_value.location_photo != None %}
+                        <p>Photo: {{ locator_value.location_photo }}</p>
+                        {% endif %}
+                    </div>
+                    <p>PRODUCTS</p>
+                    <div>
+                        <ul>
+                        {% for p in locator_value.products %}
+                        <li>
+                            <div>
+                                <p>name: {{ p.product_name }}</p>
+                                {% if p.product_desc != None %}
+                                <p>description: {{ p.product_desc }}</p>
+                                {% endif %}
+                                {% if p.product_amount != None %}
+                                <p>amount: {{ p.product_amount }}</p>
+                                {% endif %}
+                                {% if p.product_cost != None %}
+                                <p>cost: {{ p.product_cost }}</p>
+                                {% endif %}
+                                {% if p.product_photo != None %}
+                                <p>photo: {{ p.product_photo }}</p>
+                                {% endif %}
+                            </div>
+                        </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
